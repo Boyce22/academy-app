@@ -1,4 +1,4 @@
-export class CreateStudentDTO {
+export class CreateMemberDTO {
   constructor(
     public readonly name: string,
     public readonly email: string,

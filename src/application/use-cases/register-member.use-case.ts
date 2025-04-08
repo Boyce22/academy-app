@@ -1,17 +1,17 @@
 import { User } from 'src/domain/entities/user.entity';
 import { Roles } from 'src/domain/enums/user-role.enum';
-import { CreateStudentDTO } from '../dtos/students/create-student.dto';
+import { CreateMemberDTO } from '../dtos/members/create-member.dto';
 import { UserRepository } from 'src/domain/repositories/user.repository';
 import { UserAlreadyExistsError } from 'src/domain/exceptions/user-already-exists.error';
 import { HashGenerator } from 'src/domain/cryptography/hash-generator';
 
-export class RegisterStudentUseCase {
+export class RegisterMemberUseCase {
   constructor(
     private readonly userRepository: UserRepository,
     private readonly hashGenerator: HashGenerator,
   ) {}
 
-  async execute(userDTO: CreateStudentDTO): Promise<User> {
+  async execute(userDTO: CreateMemberDTO): Promise<User> {
     const exists = await this.userRepository.findByEmail(userDTO.email);
 
     if (exists)

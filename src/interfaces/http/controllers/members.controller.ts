@@ -1,12 +1,12 @@
 import { UserPresenter } from '../presenters/user.presenter';
 import { CreateUserRequestDTO } from '../dtos/auth/create-user.request.dto';
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
-import { RegisterStudentUseCase } from 'src/application/use-cases/register-student.use-case';
+import { RegisterMemberUseCase } from 'src/application/use-cases/register-member.use-case';
 
-@Controller('students')
-export class StudentsController {
+@Controller('member')
+export class MembersController {
   constructor(
-    private readonly registerStudentUseCase: RegisterStudentUseCase,
+    private readonly registerStudentUseCase: RegisterMemberUseCase,
   ) {}
 
   @Post('register')
