@@ -8,4 +8,5 @@ export class UserModel implements PrismaUser {
   password: string;
   role: RoleType; 
   createdAt: Date;
+  updatedAt: Date;
 }

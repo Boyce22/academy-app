@@ -12,6 +12,6 @@ export class CreateUserRequestDTO {
   @IsNotEmpty()
   password: string;
 
-  @IsIn(getRoleValues())
+  // @IsIn(getRoleValues()) **todo** criar uma validação que aceite valores nulos
   role: RoleType;
 }
