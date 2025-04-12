@@ -1,21 +1,20 @@
 import { User } from 'src/domain/entities/user.entity';
 import { Roles } from 'src/domain/enums/user-role.enum';
-import { CreateMemberDTO } from '../dtos/members/create-member.dto';
-import { UserRepository } from 'src/domain/repositories/user.repository';
-import { UserAlreadyExistsError } from 'src/domain/exceptions/user-already-exists.error';
+import { CreateUserDTO } from '../dtos/users/create.user.dto';
 import { HashGenerator } from 'src/domain/cryptography/hash-generator';
+import { UserRepository } from 'src/domain/repositories/user.repository';
 
-export class RegisterMemberUseCase {
+export class RegisterUserUseCase {
   constructor(
     private readonly userRepository: UserRepository,
     private readonly hashGenerator: HashGenerator,
-  ) {}
+  ) { }
 
-  async execute(userDTO: CreateMemberDTO): Promise<User> {
+  async execute(userDTO: CreateUserDTO): Promise<User> {
     const exists = await this.userRepository.findByEmail(userDTO.email);
 
     if (exists)
-      throw new UserAlreadyExistsError(
+      throw new Error(
         'Já existe um cadastro para esse usuário.',
       );
 
@@ -23,7 +22,7 @@ export class RegisterMemberUseCase {
 
     const user = User.create({
       ...userDTO,
-      role: Roles.ALUNO,
+      role: Roles.MEMBRO,
       password: hashedPassword,
     });
 

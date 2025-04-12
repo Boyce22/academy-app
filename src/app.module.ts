@@ -1,15 +1,7 @@
 import { Module } from '@nestjs/common';
-import { InfraProviders } from './infra/providers';
-import { PrismaModule } from './infra/database/prisma/prisma.module';
-import { MembersController } from './interfaces/http/controllers/members.controller';
-import { RegisterMemberUseCase } from './application/use-cases/register-member.use-case';
+import { UsersModule } from './interfaces/http/modules/users.module';
 
 @Module({
-  imports: [PrismaModule],
-  controllers: [MembersController],
-  providers: [
-    RegisterMemberUseCase,
-    ...InfraProviders,               
-  ],
+    imports: [UsersModule]
 })
-export class AppModule {}
+export class AppModule { }

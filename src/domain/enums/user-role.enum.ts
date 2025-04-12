@@ -1,5 +1,5 @@
 export enum Roles {
-  ALUNO = 1,
+  MEMBRO = 1,
   ESTAGIARIO = 2,
   TREINADOR = 3,
   DONO = 4,
@@ -11,4 +11,4 @@ export const getRoleValues = (): number[] => {
   );
 };
 
-export type RoleType = Roles.ALUNO | Roles.ESTAGIARIO | Roles.TREINADOR | Roles.DONO;
+export type RoleType = Roles.MEMBRO | Roles.ESTAGIARIO | Roles.TREINADOR | Roles.DONO;
